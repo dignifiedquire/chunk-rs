@@ -1,3 +1,5 @@
+//! Implements a rabin based chunker, following the implementation from [here](https://github.com/ipfs-shipyard/DAGger/blob/master/internal/dagger/chunker/rabin/impl.go).
+
 /// Rabin fingerprinting based chunker.
 #[derive(Debug, Clone)]
 pub struct Rabin {
@@ -25,7 +27,7 @@ impl Rabin {
         Rabin {
             init_state,
             mins_sans_preheat: config.min_size - preset.window_size,
-            mask: 1 << config.mask_bits - 1,
+            mask: 1 << (config.mask_bits - 1),
             preset,
             config,
         }
